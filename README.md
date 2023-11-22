@@ -1,9 +1,7 @@
-# 2023.2_G6_SMA_PRESAPREDADOR
+# 2023.2_G6_SMA
 
 Paradigmas:
  - SMA
- 
- (Apague esses comentários)
 
 # NomeDoProjeto
 
