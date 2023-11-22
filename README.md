@@ -1,31 +1,24 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
-
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
+# 2023.2_G6_SMA_PRESAPREDADOR
 
 Paradigmas:
- - Funcional
- - Logico
  - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2023.2_G1_Logico_ProjetoRoteirosAereos*. !!**
  
  (Apague esses comentários)
 
 # NomeDoProjeto
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo:**: 06<br>
+**Paradigma**: Sistemas Multiagentes<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 22/2015103  |  Debora Caires de Souza Moreira |
+| 20/2016480  |  Hellen Fernanda Mendonça de Faria |
+| 19/0090901  |  Laura Pinos de Oliveira |
+| 21/2005426  |  Lucas Gomes Caldas |
+| 19/0037997  |  Sidney Fernando Ferreira Lemes |
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
