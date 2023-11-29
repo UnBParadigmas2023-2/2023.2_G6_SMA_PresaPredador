@@ -47,6 +47,13 @@ class Presa(Agent):
     # Criar contador de plantas - nao pode ter mais que um numero fixo de plantas
     # Criar uma quantidade fixa de plantas
 
+class Planta(Agent):
+    """Agente que representa uma planta no modelo de presa-predador."""
+
+    def __init__(self, unique_id, model):
+        super().__init__(unique_id, model)
+        
+
 # class Predador(Agent):
     # Criar o agente do Predador
     # Criar o movimento aleatório 

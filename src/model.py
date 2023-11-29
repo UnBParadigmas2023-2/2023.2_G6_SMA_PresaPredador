@@ -2,12 +2,12 @@ import mesa
 from mesa.time import RandomActivation
 from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
-from .agents import Presa
+from .agents import Presa, Planta
 
 class PresaPredadorModelo(mesa.Model):
     """Modelo de agentes - melhorar descrição"""
 
-    def __init__(self, height, width, presa_inicial):
+    def __init__(self, height, width, presa_inicial, planta_inicial):
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
         self.running = True
@@ -20,6 +20,15 @@ class PresaPredadorModelo(mesa.Model):
 
         for _ in range(presa_inicial):
             a = Presa(self.next_id(), self)
+            self.schedule.add(a)
+            
+            # Adicione o agente a uma célula de grade aleatória
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height)
+            self.grid.place_agent(a, (x, y))
+
+        for _ in range(planta_inicial):
+            a = Planta(self.next_id(), self)
             self.schedule.add(a)
             
             # Adicione o agente a uma célula de grade aleatória
