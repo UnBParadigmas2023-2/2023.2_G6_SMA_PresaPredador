@@ -1,28 +1,41 @@
-import mesa
-from mesa.visualization.modules import CanvasGrid
 from mesa.visualization.ModularVisualization import ModularServer
-from .modelo import PlantModel
-from .plant import Plant
+from mesa.visualization.modules import CanvasGrid, ChartModule
+from mesa.visualization.UserParam import UserSettableParameter
 
-def agent_portrayal(agent):
-    if isinstance(agent, Plant):
-        portrayal = {"Shape": "circle",
-                     "Color": "green",
-                     "Filled": "true",
-                     "Layer": 0,
-                     "r": agent.size}
-    else:
-        portrayal = {"Shape": "circle",
-                     "Color": agent.color,
-                     "Filled": "true",
-                     "Layer": 0,
-                     "r": agent.size}
+from .agents import Presa
+from .model import PresaPredadorModelo
+
+
+def presa_predador_portrayal(agent):
+    if agent is None:
+        return
+    
+    portrayal = {}
+
+    if isinstance(agent, Presa):
+        portrayal = {
+            "Shape": "circle",
+            "Color": "brown",
+            "Filled": "true",
+            "r": 0.5,
+            "Layer": 1,
+            "text": agent.vida
+        }
+
     return portrayal
 
-width = 100  
-height = 100 
-num_plants = 40  
+model_params = {
+    "height": UserSettableParameter("slider", "Altura da grade", 20, 10, 50, 1),
+    "width": UserSettableParameter("slider", "Largura da grade", 20, 10, 50, 1),
+    "presa_inicial": UserSettableParameter("slider", "Numero inicial de presas", 40, 10, 200, 1),
+}
 
-grid = CanvasGrid(agent_portrayal, width, height, 1000, 1000)  
-model_params = {"width": width, "height": height, "num_plants": num_plants}
-server = ModularServer(PlantModel, [grid], "Plant Model", model_params)
+canvas_element = CanvasGrid(presa_predador_portrayal, 20, 20, 500, 500)
+chart_element = ChartModule(
+    [{"Label": "Predadores", "Color": "#AA0000"}, {"Label": "Presas", "Color": "#666666"}]
+)
+
+server = ModularServer(
+    PresaPredadorModelo, [canvas_element, chart_element], "Modelo Presa-Predador", model_params
+)
+server.port = 8521
