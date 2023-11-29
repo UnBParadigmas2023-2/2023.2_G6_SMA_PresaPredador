@@ -32,11 +32,11 @@ class Presa(Agent):
     def step(self):
         """Executa as ações da presa durante um passo do modelo."""
         self.move()
-        if self.vida > 0:
-            other_agent = self.random.choice(self.model.schedule.agents)
-            if other_agent is not None:
-                other_agent.vida += 1
-                self.vida -= 1
+        # if self.vida > 0:
+          #  other_agent = self.random.choice(self.model.schedule.agents)
+           # if other_agent is not None:
+            #    other_agent.vida += 1
+             #   self.vida -= 1
     # Colocar para as presas comerem as plantas
     # Aumentar a vida de acordo com que comem
     # Movimento de fugir dos predadores
@@ -50,9 +50,25 @@ class Presa(Agent):
 class Planta(Agent):
     """Agente que representa uma planta no modelo de presa-predador."""
 
-    def __init__(self, unique_id, model):
+    def __init__(self, unique_id, model,fully_grown, countdown):
         super().__init__(unique_id, model)
+        self.fully_grown = fully_grown
+        self.countdown = countdown
+        self.current_countdown = self.countdown
         
+    def grow(self, fully_grown):
+        """
+        Countdown before getting fully grown
+        after being eaten
+        """
+        self.current_countdown -= 1
+        if self.fully_grown or self.current_countdown == 0:
+            self.current_countdown = self.countdown
+            self.fully_grown = True
+
+    def step(self):
+        # ... to be completed
+        self.grow()
 
 # class Predador(Agent):
     # Criar o agente do Predador

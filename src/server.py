@@ -28,8 +28,7 @@ def presa_predador_portrayal(agent):
             "Color": "green",
             "Filled": "true",
             "r": 0.2,
-            "Layer": 1,
-            "text": agent.vida
+            "Layer": 1
         }
 
     return portrayal

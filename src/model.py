@@ -13,7 +13,7 @@ class PresaPredadorModelo(mesa.Model):
         self.running = True
 
         self.datacollector = DataCollector(
-            agent_reporters={"Presa": lambda agent: agent.vida}
+            agent_reporters={"Presa": lambda agent: agent}
         )
 
         self.next_id_counter = 1  # Inicialize o contador
