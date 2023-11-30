@@ -1,4 +1,5 @@
 from .movimentaAgente import *
+import random
 
 class Presa(MovimentaAgente):
     """Agente que representa uma presa no modelo de presa-predador.
@@ -10,6 +11,9 @@ class Presa(MovimentaAgente):
     def __init__(self, unique_id, model, pos, moore):
         super().__init__(unique_id, model, pos, moore)
         self.vida = 10
+        self.sexo = random.randint(0,1)
+        self.idade = 1
+        self.idade_fertil = 20
 
 
     def comer(self):
@@ -20,7 +24,20 @@ class Presa(MovimentaAgente):
                 agente.fully_grown = False
                 break
 
-
+    def morre(self):
+        if self.vida <= 0 or self.idade >= 50:
+            self.model.schedule.remove(self)
+            self.model.grid.remove_agent(self)
+            
+    
+    def tenta_reproducao(self):
+        # reproduz se for femea, em uma chance menor que 70% e se estiver na idade de reproducao
+        if self.sexo == 1 and random.random() < 0.7 and self.idade in range(self.idade_fertil, self.idade_fertil + 5):
+            a = Presa(self.model.next_id(), self.model, self.pos, self.moore)
+            self.model.schedule.add(a)
+            self.model.grid.place_agent(a, self.pos)
+            self.vida = self.vida // 2
+            
     def give_life(self):
         """Dá vida a uma presa vizinha escolhida aleatoriamente."""
         cellmates = self.model.grid.get_cell_list_contents([self.pos])
@@ -31,9 +48,11 @@ class Presa(MovimentaAgente):
 
     def step(self):
         """Executa as ações da presa durante um passo do modelo."""
+        self.idade += 1
         self.comer()
         self.movAleatorio()
-        self.comer()
+        self.tenta_reproducao()
+        self.morre()
         # if self.vida > 0:
           #  other_agent = self.random.choice(self.model.schedule.agents)
            # if other_agent is not None:

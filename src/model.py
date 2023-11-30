@@ -45,15 +45,11 @@ class PresaPredadorModelo(mesa.Model):
 
     def step(self):
         if self.running:
-            # Adicionar presas aleatórias durante a execução
-            if self.random.random() < 0.1: 
-                self.criaPresa()
             
             self.schedule.step()
 
             # Coletar dados para o DataCollector
             self.datacollector.collect(self)
-
             # Adicionar a contagem de presas ao DataCollector
             presas_count = sum(isinstance(agent, Presa) for agent in self.schedule.agents)
             self.datacollector.get_agent_vars_dataframe().loc[self.schedule.time, "Presas"] = presas_count

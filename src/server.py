@@ -16,12 +16,18 @@ def presa_predador_portrayal(agent):
     if isinstance(agent, Presa):
         portrayal = {
             "Shape": "circle",
-            "Color": "blue",
+            #"Color": "blue",
             "Filled": "true",
             "r": 0.5,
             "Layer": 1,
             "text": agent.vida
         }
+        
+        if agent.sexo == 0:
+            portrayal["Color"] = "#2e0507"
+        elif agent.sexo == 1:
+            portrayal["Color"] = "#f26d74"
+        
     if isinstance(agent, Planta):
         portrayal = {
             "Shape": "circle",
