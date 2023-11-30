@@ -15,6 +15,13 @@ class Presa(MovimentaAgente):
     #     """Move a presa para uma posição vizinha escolhida aleatoriamente."""
     #     self.movAleatorio()
 
+    def comer(self):
+        agentes_existentes = self.model.grid.get_cell_list_contents([self.pos])
+        for agente in agentes_existentes:
+            if isinstance(agente, Planta) and agente.is_fully_gown(): 
+                self.vida += 1
+                agente.fully_grown = False
+                break
     def give_life(self):
         """Dá vida a uma presa vizinha escolhida aleatoriamente."""
         cellmates = self.model.grid.get_cell_list_contents([self.pos])
@@ -26,6 +33,7 @@ class Presa(MovimentaAgente):
     def step(self):
         """Executa as ações da presa durante um passo do modelo."""
         self.movAleatorio()
+        self.comer()
         # if self.vida > 0:
           #  other_agent = self.random.choice(self.model.schedule.agents)
            # if other_agent is not None:
@@ -51,14 +59,13 @@ class Planta(Agent):
         self.current_countdown = self.countdown
         
     def grow(self):
-        """
-        Countdown before getting fully grown
-        after being eaten
-        """
         self.current_countdown -= 1
         if self.fully_grown or self.current_countdown == 0:
             self.current_countdown = self.countdown
             self.fully_grown = True
+
+    def is_fully_gown(self):
+        return self.fully_grown
 
     def step(self):
         # ... to be completed
