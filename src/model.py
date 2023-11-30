@@ -23,6 +23,14 @@ class PresaPredadorModelo(mesa.Model):
         for _ in range(presa_inicial):
             self.criaPresa()
 
+        # cria Planta
+        for x in range(self.grid.width):
+            for y in range(self.grid.height):
+                a = Planta(self.next_id(), self,
+                        fully_grown=True,
+                        countdown=planta_countdown)
+                self.schedule.add(a)
+                self.grid.place_agent(a, (x, y))
         # cria Planta com valor fixo
         plant_positions = self.random.sample([(x, y) for x in range(self.grid.width) for y in range(self.grid.height)], self.num_plantas)
         for pos in plant_positions:
@@ -34,10 +42,18 @@ class PresaPredadorModelo(mesa.Model):
         self.next_id_counter += 1  # Incrementar o contador
         return self.next_id_counter
 
+
     def step(self):
         if self.running:
             # Adicionar presas aleatórias durante a execução
             if self.random.random() < 0.1: 
+                a = Presa(self.next_id(), self)
+                self.schedule.add(a)
+                x = self.random.randrange(self.grid.width)
+                y = self.random.randrange(self.grid.height)
+                self.grid.place_agent(a, (x, y))
+
+
                 self.criaPresa()
             
             self.schedule.step()
