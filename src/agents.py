@@ -33,7 +33,6 @@ class Presa(MovimentaAgente):
         """Executa as ações da presa durante um passo do modelo."""
         self.comer()
         self.movAleatorio()
-        self.comer()
         # if self.vida > 0:
           #  other_agent = self.random.choice(self.model.schedule.agents)
            # if other_agent is not None:
@@ -76,8 +75,32 @@ class Planta(Agent):
         # ... to be completed
         self.grow()
 
+class Predador(MovimentaAgente):
+    vida = None
+    def __init__(self, unique_id, model, pos, moore, vida=100):
+        super().__init__(unique_id, model, pos, moore)
+        self.vida = vida
+
+    def comer(self):
+        agentes_existentes = self.model.grid.get_cell_list_contents([self.pos])
+        for agente in agentes_existentes:
+            if isinstance(agente, Presa): 
+                self.vida += agente.vida
+                self.vida += 10
+                self.model.schedule.remove(agente)
+                self.model.grid.remove_agent(agente)
+                break
+
+    def step(self):
+        """Executa as ações da presa durante um passo do modelo."""
+        self.comer()
+        self.movAleatorio()
+        self.vida -= 1
+        if self.vida < 1:
+            self.model.schedule.remove(self)
+            self.model.grid.remove_agent(self)
 # class Predador(Agent):
-    # Criar o agente do Predador
+    # Criar o agente do Predador 
     # Criar o movimento aleatório 
     # Criar a questão da vida do predador
     # Criar a parte de comer a presa

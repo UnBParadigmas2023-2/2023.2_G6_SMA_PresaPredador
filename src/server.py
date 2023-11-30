@@ -3,7 +3,7 @@ from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid, ChartModule
 from mesa.visualization.UserParam import UserSettableParameter
 
-from .agents import Presa, Planta
+from .agents import Presa, Planta, Predador
 from .model import PresaPredadorModelo
 
 
@@ -19,8 +19,7 @@ def presa_predador_portrayal(agent):
             "Color": "blue",
             "Filled": "true",
             "r": 0.5,
-            "Layer": 1,
-            "text": agent.vida
+            "Layer": 1
         }
     if isinstance(agent, Planta):
         portrayal = {
@@ -30,6 +29,15 @@ def presa_predador_portrayal(agent):
             "r": 0.2,
             "Layer": 1
         }
+    if isinstance(agent, Predador):
+        portrayal = {
+            "Shape": "circle",
+            "Color": "black",
+            "Filled": "true",
+            "r": 0.6,
+            "Layer": 1,
+            "text": agent.vida
+        }
 
     return portrayal
 
@@ -38,6 +46,7 @@ model_params = {
     "width": UserSettableParameter("slider", "Largura da grade", 20, 10, 50, 1),
     "presa_inicial": UserSettableParameter("slider", "Numero inicial de presas", 40, 10, 200, 1),
     "planta_countdown": UserSettableParameter("slider", "Tempo de crescimento da planta apos ser comida", 16, 1, 100, 1),
+    "predador_inicial": UserSettableParameter("slider", "Numero inicial de predadores", 16, 1, 100, 1),
 }
 
 canvas_element = CanvasGrid(presa_predador_portrayal, 20, 20, 500, 500)
