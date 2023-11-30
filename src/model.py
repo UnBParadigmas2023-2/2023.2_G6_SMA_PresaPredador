@@ -47,13 +47,6 @@ class PresaPredadorModelo(mesa.Model):
         if self.running:
             # Adicionar presas aleatórias durante a execução
             if self.random.random() < 0.1: 
-                a = Presa(self.next_id(), self)
-                self.schedule.add(a)
-                x = self.random.randrange(self.grid.width)
-                y = self.random.randrange(self.grid.height)
-                self.grid.place_agent(a, (x, y))
-
-
                 self.criaPresa()
             
             self.schedule.step()

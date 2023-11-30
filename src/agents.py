@@ -11,9 +11,6 @@ class Presa(MovimentaAgente):
         super().__init__(unique_id, model, pos, moore)
         self.vida = 10
 
-    # def move(self):
-    #     """Move a presa para uma posição vizinha escolhida aleatoriamente."""
-    #     self.movAleatorio()
 
     def comer(self):
         agentes_existentes = self.model.grid.get_cell_list_contents([self.pos])
@@ -34,7 +31,6 @@ class Presa(MovimentaAgente):
 
     def step(self):
         """Executa as ações da presa durante um passo do modelo."""
-        self.move()
         self.comer()
         self.movAleatorio()
         self.comer()
