@@ -16,7 +16,7 @@ def presa_predador_portrayal(agent):
     if isinstance(agent, Presa):
         portrayal = {
             "Shape": "circle",
-            "Color": "brown",
+            "Color": "blue",
             "Filled": "true",
             "r": 0.5,
             "Layer": 1,
@@ -25,7 +25,7 @@ def presa_predador_portrayal(agent):
     if isinstance(agent, Planta):
         portrayal = {
             "Shape": "circle",
-            "Color": "green",
+            "Color": "green" if agent.fully_grown else "white",
             "Filled": "true",
             "r": 0.2,
             "Layer": 1

@@ -41,6 +41,7 @@ class PresaPredadorModelo(mesa.Model):
         self.next_id_counter += 1  # Incrementar o contador
         return self.next_id_counter
 
+
     def step(self):
         if self.running:
             # Adicionar presas aleatórias durante a execução
@@ -50,6 +51,7 @@ class PresaPredadorModelo(mesa.Model):
                 x = self.random.randrange(self.grid.width)
                 y = self.random.randrange(self.grid.height)
                 self.grid.place_agent(a, (x, y))
+
 
             self.schedule.step()
 
