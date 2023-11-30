@@ -21,13 +21,7 @@ class PresaPredadorModelo(mesa.Model):
 
         # cria Presa
         for _ in range(presa_inicial):
-            a = Presa(self.next_id(), self)
-            self.schedule.add(a)
-            
-            # Adicione o agente a uma célula de grade aleatória
-            x = self.random.randrange(self.grid.width)
-            y = self.random.randrange(self.grid.height)
-            self.grid.place_agent(a, (x, y))
+            self.criaPresa()
 
         # cria Planta com valor fixo
         plant_positions = self.random.sample([(x, y) for x in range(self.grid.width) for y in range(self.grid.height)], self.num_plantas)
@@ -44,12 +38,8 @@ class PresaPredadorModelo(mesa.Model):
         if self.running:
             # Adicionar presas aleatórias durante a execução
             if self.random.random() < 0.1: 
-                a = Presa(self.next_id(), self)
-                self.schedule.add(a)
-                x = self.random.randrange(self.grid.width)
-                y = self.random.randrange(self.grid.height)
-                self.grid.place_agent(a, (x, y))
-
+                self.criaPresa()
+            
             self.schedule.step()
 
             # Coletar dados para o DataCollector
@@ -63,3 +53,11 @@ class PresaPredadorModelo(mesa.Model):
         for _ in range(step_count):
             self.step()
         self.running = False
+        
+    def criaPresa(self):
+        x = self.random.randrange(self.grid.width)
+        y = self.random.randrange(self.grid.height)
+        a = Presa(self.next_id(), self, (x, y), moore = True)
+        self.schedule.add(a)
+        # Adicione o agente a uma célula de grade aleatória
+        self.grid.place_agent(a, (x, y))
