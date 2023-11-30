@@ -19,8 +19,7 @@ def presa_predador_portrayal(agent):
             "Color": "blue",
             "Filled": "true",
             "r": 0.5,
-            "Layer": 1,
-            "text": agent.vida
+            "Layer": 1
         }
     if isinstance(agent, Planta):
         portrayal = {
@@ -36,7 +35,8 @@ def presa_predador_portrayal(agent):
             "Color": "black",
             "Filled": "true",
             "r": 0.6,
-            "Layer": 1
+            "Layer": 1,
+            "text": agent.vida
         }
 
     return portrayal
