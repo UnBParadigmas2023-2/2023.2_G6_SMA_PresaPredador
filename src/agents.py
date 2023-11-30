@@ -50,13 +50,13 @@ class Presa(Agent):
 class Planta(Agent):
     """Agente que representa uma planta no modelo de presa-predador."""
 
-    def __init__(self, unique_id, model,fully_grown, countdown):
+    def __init__(self, unique_id, model, fully_grown, countdown):
         super().__init__(unique_id, model)
         self.fully_grown = fully_grown
         self.countdown = countdown
         self.current_countdown = self.countdown
         
-    def grow(self, fully_grown):
+    def grow(self):
         """
         Countdown before getting fully grown
         after being eaten

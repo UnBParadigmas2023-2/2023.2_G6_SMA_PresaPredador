@@ -7,10 +7,11 @@ from .agents import Presa, Planta
 class PresaPredadorModelo(mesa.Model):
     """Modelo de agentes - melhorar descrição"""
 
-    def __init__(self, height, width, presa_inicial, planta_inicial):
+    def __init__(self, height, width, presa_inicial, planta_countdown):
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
         self.running = True
+        self.num_plantas = 150  # numero desejado de plantas
 
         self.datacollector = DataCollector(
             agent_reporters={"Presa": lambda agent: agent}
@@ -18,6 +19,7 @@ class PresaPredadorModelo(mesa.Model):
 
         self.next_id_counter = 1  # Inicialize o contador
 
+        # cria Presa
         for _ in range(presa_inicial):
             a = Presa(self.next_id(), self)
             self.schedule.add(a)
@@ -27,14 +29,14 @@ class PresaPredadorModelo(mesa.Model):
             y = self.random.randrange(self.grid.height)
             self.grid.place_agent(a, (x, y))
 
-        for _ in range(planta_inicial):
-            a = Planta(self.next_id(), self)
-            self.schedule.add(a)
-            
-            # Adicione o agente a uma célula de grade aleatória
-            x = self.random.randrange(self.grid.width)
-            y = self.random.randrange(self.grid.height)
-            self.grid.place_agent(a, (x, y))
+        # cria Planta
+        for x in range(self.grid.width):
+            for y in range(self.grid.height):
+                a = Planta(self.next_id(), self,
+                        fully_grown=True,
+                        countdown=planta_countdown)
+                self.schedule.add(a)
+                self.grid.place_agent(a, (x, y))
 
     def next_id(self):
         self.next_id_counter += 1  # Incrementar o contador

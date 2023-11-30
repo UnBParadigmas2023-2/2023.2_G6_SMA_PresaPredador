@@ -37,7 +37,7 @@ model_params = {
     "height": UserSettableParameter("slider", "Altura da grade", 20, 10, 50, 1),
     "width": UserSettableParameter("slider", "Largura da grade", 20, 10, 50, 1),
     "presa_inicial": UserSettableParameter("slider", "Numero inicial de presas", 40, 10, 200, 1),
-    "planta_inicial": UserSettableParameter("slider", "Numero inicial de plantas", 40, 10, 200, 1),
+    "planta_countdown": UserSettableParameter("slider", "Tempo de crescimento da planta apos ser comida", 16, 1, 100, 1),
 }
 
 canvas_element = CanvasGrid(presa_predador_portrayal, 20, 20, 500, 500)
