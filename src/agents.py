@@ -31,7 +31,7 @@ class Agente(MovimentaAgente):
             elif isinstance(agente_food, self.food) and agente == Predador:
                 self.vida += agente_food.vida
                 self.vida += 1
-                self.model.schedule.remove(agente_food)
+                self.model.ativacao_aleatoria.remove(agente_food)
                 self.model.grid.remove_agent(agente_food)
                 break
     
@@ -39,7 +39,7 @@ class Agente(MovimentaAgente):
         # morre se a vida zera ou idade superior a 50
         self.vida -= 1
         if self.vida <= 0 or self.idade >= 50:
-            self.model.schedule.remove(self)
+            self.model.ativacao_aleatoria.remove(self)
             self.model.grid.remove_agent(self)
         
 class Planta(Agent):
@@ -77,7 +77,7 @@ class Presa(Agente):
         # reproduz se for femea, em uma chance menor que 30% e se estiver na idade de reproducao
         if self.sexo == 1 and random.random() < 0.3 and self.idade in range(self.idade_fertil, self.idade_fertil + 5):
             a = Presa(self.model.next_id(), self.model, self.pos, self.moore)
-            self.model.schedule.add(a)
+            self.model.ativacao_aleatoria.add(a)
             self.model.grid.place_agent(a, self.pos)
             self.vida = self.vida // 2
 
@@ -98,7 +98,7 @@ class Predador(Agente):
         # reproduz se for femea, em uma chance menor que 30% e se estiver na idade de reproducao
         if self.sexo == 1 and random.random() < 0.3 and self.idade in range(self.idade_fertil, self.idade_fertil + 5):
             a = Predador(self.model.next_id(), self.model, self.pos, self.moore)
-            self.model.schedule.add(a)
+            self.model.ativacao_aleatoria.add(a)
             self.model.grid.place_agent(a, self.pos)
             # em caso de sucesso, a vida reduz pela metade
             self.vida = self.vida // 2
