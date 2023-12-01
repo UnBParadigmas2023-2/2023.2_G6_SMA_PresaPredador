@@ -1,4 +1,3 @@
-import mesa
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid, ChartModule
 from mesa.visualization.UserParam import UserSettableParameter
@@ -61,7 +60,7 @@ model_params = {
 
 canvas_element = CanvasGrid(presa_predador_portrayal, 20, 20, 500, 500)
 chart_element = ChartModule(
-    [{"Label": "Predadores", "Color": "#AA0000"}, {"Label": "Presas", "Color": "#666666"}]
+    [{"Label": "Predador", "Color": "#AA0000"}, {"Label": "Presa", "Color": "#666666"}]
 )
 
 server = ModularServer(
