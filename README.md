@@ -90,7 +90,9 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
+| Débora C. de S. Moreira |  Minha contribuição para o projeto incluiu o início da estruturação do projeto para a implementação do MESA, além da criação de padrões para os agentes. Criei a lógica de comer das presas e dos predadores, além de que também inicei as lógicas de morte das presas e dos predadores. Além disso, auxiliei alguns colegas no entendimento geral da estrutura do MESA. | Excelente |
 | Sidney Fernando F. Lemes |  Minha contribuição para o projeto incluiu a pesquisa e apresentação de ideias de projetos para o grupo, bem como a organização mais eficiente dos módulos do projeto. Além disso, implementei funcionalidades que permitiram aos agentes terem sexos distintos, introduzi um mecanismo de mortalidade para os agentes e desenvolvi a lógica de reprodução para eles. Estas adições permitiram uma representação mais realista e dinâmica do comportamento dos agentes no modelo de simulação do ecossistema presa-predador. | Excelente |
+
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
