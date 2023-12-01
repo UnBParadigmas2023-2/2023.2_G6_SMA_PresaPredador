@@ -28,14 +28,22 @@ class PresaPredadorModelo(mesa.Model):
         for _ in range(predador_inicial):
             self.criaPredador()
         
-        # cria Planta
-        for x in range(self.grid.width):
-            for y in range(self.grid.height):
-                a = Planta(self.next_id(), self,
-                        fully_grown=True,
-                        countdown=planta_countdown)
-                self.schedule.add(a)
-                self.grid.place_agent(a, (x, y))
+        # # cria Planta por todo o plano
+        # for x in range(self.grid.width):
+        #     for y in range(self.grid.height):
+        #         a = Planta(self.next_id(), self,
+        #                 fully_grown=True,
+        #                 countdown=planta_countdown)
+        #         self.schedule.add(a)
+        #         self.grid.place_agent(a, (x, y))
+
+        # cria Planta com valor fixo
+        plant_positions = self.random.sample([(x, y) for x in range(self.grid.width) for y in range(self.grid.height)], self.num_plantas)
+        for pos in plant_positions:
+            a = Planta(self.next_id(), self, fully_grown=True, countdown=planta_countdown)
+            self.schedule.add(a)
+            self.grid.place_agent(a, pos)
+
 
         
 
