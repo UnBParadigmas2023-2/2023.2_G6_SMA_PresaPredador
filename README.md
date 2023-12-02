@@ -93,7 +93,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Débora C. de S. Moreira |  Minha contribuição para o projeto incluiu o início da estruturação do projeto para a implementação do MESA, além da criação de padrões para os agentes. Criei a lógica de comer das presas e dos predadores, além de que também inicei as lógicas de morte das presas e dos predadores. Além disso, auxiliei alguns colegas no entendimento geral da estrutura do MESA. | Excelente |
 | Sidney Fernando F. Lemes |  Minha contribuição para o projeto incluiu a pesquisa e apresentação de ideias de projetos para o grupo, bem como a organização mais eficiente dos módulos do projeto. Além disso, implementei funcionalidades que permitiram aos agentes terem sexos distintos, introduzi um mecanismo de mortalidade para os agentes e desenvolvi a lógica de reprodução para eles. Estas adições permitiram uma representação mais realista e dinâmica do comportamento dos agentes no modelo de simulação do ecossistema presa-predador. | Excelente |
 | Lucas Gomes Caldas |  Minha contribuição para o projeto incluiu a organização mais eficiente dos módulos do projeto, girando em torno do agente Planta, que serve de comida para as Presas e para os Predadores. Além disso, implementei a lógica de atualização aleatória, onde é capturado os movimentos de cada agente, sendo fundamental para o funcionamento do gráfico, também implementado por mim. | Excelente |
-
+| Laura Pinos de Oliveira |  Para criação e implementação do projeto eu estudei a implementação do MESA, contribui na criação de presas e predadores. | Excelente |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
