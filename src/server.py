@@ -51,14 +51,15 @@ def presa_predador_portrayal(agent):
     return portrayal
 
 model_params = {
-    "height": UserSettableParameter("slider", "Altura da grade", 20, 10, 50, 1),
-    "width": UserSettableParameter("slider", "Largura da grade", 20, 10, 50, 1),
-    "presa_inicial": UserSettableParameter("slider", "Numero inicial de presas", 15, 10, 200, 1),
-    "planta_countdown": UserSettableParameter("slider", "Tempo de crescimento da planta apos ser comida", 50, 1, 100, 1),
-    "predador_inicial": UserSettableParameter("slider", "Numero inicial de predadores", 5, 1, 100, 1),
+    "height": UserSettableParameter("slider", "Altura da grade", 20, 10, 20, 1),
+    "width": UserSettableParameter("slider", "Largura da grade", 20, 10, 20, 1),
+    "presa_inicial": UserSettableParameter("slider", "Numero inicial de presas", 40, 10, 200, 1),
+    "planta_countdown": UserSettableParameter("slider", "Tempo de crescimento da planta apos ser comida", 16, 1, 100, 1),
+    "predador_inicial": UserSettableParameter("slider", "Numero inicial de predadores", 16, 1, 100, 1),
+
 }
 
-canvas_element = CanvasGrid(presa_predador_portrayal, 20, 20, 500, 500)
+canvas_element = CanvasGrid(presa_predador_portrayal, model_params["width"].value, model_params["height"].value, 500, 500)
 chart_element = ChartModule(
     [{"Label": "Predador", "Color": "#AA0000"}, {"Label": "Presa", "Color": "#666666"}]
 )
@@ -66,4 +67,5 @@ chart_element = ChartModule(
 server = ModularServer(
     PresaPredadorModelo, [canvas_element, chart_element], "Modelo Presa-Predador", model_params
 )
+
 server.port = 8521
