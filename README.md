@@ -97,11 +97,19 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Hellen Fernanda M. |  Minha contribuição nesse projeto foi na elaboração inicial do projeto, juntamente com a Debora, estudamos os conceitos e conseguimos implementar alguns agentes iniciais. Além disso, conseguimos desenvolver algumas ações dos agentes. | Excelente |
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+
+Durante o desenvolvimento deste projeto, o grupo aprendeu várias lições valiosas:
+
+* Colaboração Eficiente: A colaboração eficiente foi crucial para o sucesso do projeto. A troca constante de ideias, revisões de código e resolução colaborativa de problemas permitiram um progresso consistente.
+* MESA: O entendimento da biblioteca MESA foi uma lição importante. A necessidade de entender como os agentes interagem, como o ambiente é modelado e como o modelo evolui ao longo do tempo foi essencial para o desenvolvimento do simulador.
+* Modelagem de Agentes: A modelagem de agentes em um sistema multiagente é uma tarefa desafiadora que requer uma compreensão profunda do domínio do problema. Definir comportamentos realistas e interações entre os agentes foi crucial.
+* Complexidade Emergente: Observamos que, mesmo com regras relativamente simples para presas, predadores e plantas, a simulação resulta em dinâmicas complexas e padrões emergentes. Isso destaca a complexidade que pode surgir de interações entre agentes simples.
+* Fragilidades: Durante o desenvolvimento, enfrentamos alguns desafios, como a necessidade de entender a biblioteca MESA porém esses desafios também proporcionaram uma grande curva de aprendizado.
+
+Trabalhos Futuros
+* Refinamento do Modelo: O modelo pode ser refinado ainda mais para incluir mais detalhes e fatores que afetam o ecossistema presa-predador.
+* Visualizações Adicionais: A adição de visualizações adicionais e métricas de desempenho pode ajudar na análise e compreensão mais aprofundada dos resultados da simulação.
+* Otimização e Desempenho: Dependendo da escala da simulação, otimizações no código e considerações de desempenho podem ser exploradas.
 
 ## Fontes
 - [A Multi-Agent System in Python](https://medium.com/agents-and-robots/a-multi-agent-system-in-python-74701f256c3a)
